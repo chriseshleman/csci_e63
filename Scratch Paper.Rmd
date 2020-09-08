@@ -1,0 +1,147 @@
+---
+title: "Scratch Paper"
+author: "Chris Eshleman"
+date: "9/4/2020"
+output: html_document
+---
+
+```{r}
+#install.packages("corrplot") 
+library(corrplot)
+library(Hmisc)
+library("PerformanceAnalytics")
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+HERE HERE HERE HERE HERE 
+Start with this: 
+```{r}
+abba = rnorm(1000) 
+abba2 = mean(abba) 
+X <- rnorm(50,mean=0,sd=1)
+mean(X)
+```
+Now build in more than one sample set, 
+then take the standard deviation, 
+then do a triple graphic instead of a single. 
+```{r}
+X2 = matrix(rnorm(N), ncol=3) 
+```
+
+TO HERE TO HERE TO HERE 
+
+
+LAB LAB LAB LAB LAB LAB 
+```{r}
+image_data <- read.table("./image_data.txt", sep="\t")
+image_data <- as.matrix(image_data)
+mean_data <- mean(image_data)
+sd_data <- sd(image_data)
+
+z_score = matrix(0,32,48) 
+
+for(i in 1:32){
+		 for(j in 1:48){
+			z_score[i,j] <- (image_data[i,j] - mean_data) / sd_data
+		}
+	}
+head(z_score,4) 
+```
+
+LAB LAB LAB LAB LAB LAB 
+
+
+SLIDES SLIDES SLIDES SLIDES 
+
+```{r}
+
+rnorm(20) # this takes 20 values from a normally distributed random variable with mean 0 and sd 1. 
+
+
+for ( i in 1:1000 ) 
+     m[i] <- mean()
+
+
+n <- numeric(1000) 
+m <- numeric(0) 
+for ( i in 1:1000 ) {
+     m[i] <- mean(rnorm(20))
+} 
+
+m[1:180] 
+
+hist(m, col="pink") sum(abs(m)>0.3) 
+```
+
+SLIDES SLIDES SLIDES SLIDES 
+
+
+
+```{r}
+pounds <- c(45000, 50000, 35000, 40000, 35000, 45000, 10000, 15000) 
+
+for(i in 1:length(pounds)){
+         print(pounds[i])
+    }
+```
+
+
+
+
+
+
+```{r}
+xx = matrix(rnorm(50000), ncol=10)
+dim(xx) 
+head(xx) 
+```
+
+
+```{r}
+n <- numeric(1000) 
+
+for ( i in 1:1000 ) {
+     m[i] <- mean(rnorm(20))
+}
+
+m[1:8]
+
+#hist(m, col="pink") sum(abs(m)>0.3)
+```
+
+
+```{r}
+sample.sizes=c(3,10,50, 100, 500, 1000)
+
+mean.sds = numeric(0) 
+
+for ( N in sample.sizes ) { 
+}
+
+plot(sample.sizes,mean.sds, main="SEM vs sample size",pch=19)
+lines(sample.sizes,1/sqrt(sample.sizes),col='blue')
+```
+
+
+
+
+```{r}
+res2 = rcorr(as.matrix(iris[,1:4]))
+res2$r
+res2$P
+```
+
+```{r}
+chart.Correlation(iris[,1:4], histogram=TRUE, pch=19) 
+```
+
+
+```{r}
+col = colorRampPalette(c("blue", "white", "red"))(20)
+heatmap(x = as.matrix(iris[,1:4]), col = col, symm = TRUE)
+```
+

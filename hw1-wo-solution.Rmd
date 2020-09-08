@@ -73,7 +73,7 @@ sample.sizes=c(3,10,50, 100, 500, 1000)
 # on assignment, see examples in the slides) 
 mean.sds = numeric(0) 
 
-for ( N in sample.sizes ) { # try different sample sizes
+for ( N in sample.sizes ) { # try different sample sizes 
 
  # INSERT YOUR CODE HERE: (you may want to check the slides). 
   

@@ -1,0 +1,142 @@
+---
+title: "CSCI E-63C: Week 1 Problem Set"
+author: "Christopher Eshleman" 
+output:
+  html_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+rm(list=ls()) # clear the global environment 
+```
+
+# Problem 1 (30 points).
+
+###Reproduce example from class: 
+
+```{r}
+m <- matrix(0) 
+n <- numeric(1000) 
+for ( i in 1:1000 ) {
+     m[i] <- mean(rnorm(20))
+}
+#m[1:8]
+hist(m, col="pink") 
+#sum(abs(m)>0.3) 
+```
+
+###Practice practice practice: 
+
+```{r}
+rm(list=ls()) # clear the global environment 
+
+# Now build upward from the ground level. 
+
+head(rnorm(1000)) # This gives us our 1000 sample. 
+mean(rnorm(1000)) # Here is hte mean of that 1000-number sample.
+bb <- numeric(0) # A recepticle for results (the means of each 1000-number sample).
+for(aa in 1:3) { # Generate means (three) for the recepticle. This is a vector. 
+  bb[aa] <- mean(rnorm(1000)) 
+}
+sd(bb) # Find the standard deviation of that vector. 
+sizes <- c(3,5) # Here are two sample sizes instead of one. 
+sds <- numeric(0) # A recepticle for the standard deviations of the means. 
+
+#for ( N in 1:sizes ) { # try different sample sizes 
+#  for(aa in 1:3) {
+#  bb[aa] <- mean(rnorm(1000)) 
+#  }
+#  sds[N] <- sd(bb)
+#} 
+```
+
+###Main main main: 
+
+```{r sem,eval=FALSE}
+
+rm(list=ls()) # clear the global environment 
+
+sample.sizes=c(3,10,50,100,500,1000) 
+m <- numeric(0) 
+mean.sds <- numeric(0) 
+
+for ( N in sample.sizes ) { # try different sample sizes 
+  
+} 
+
+plot(sample.sizes,mean.sds, main="SEM vs sample size",pch=19)
+lines(sample.sizes,1/sqrt(sample.sizes),col='blue')
+```
+
+
+# Problem 2 (30 points).
+
+###Main main main: 
+
+
+```{r,eval=TRUE}
+N1 <- 1 
+
+n.repeats <- 1000 
+s.values1 <- numeric() 
+for (i.exp in 1:n.repeats) { 
+   x1 <- runif(N1) 
+
+  s.values1[i.exp] <- sum(x1) 
+}
+```
+
+```{r,eval=TRUE}
+N2 <- 500  
+
+n.repeats <- 1000 
+s.values2 <- numeric() 
+
+for (i.exp in 1:n.repeats) { 
+
+   x2 <- runif(N2)  #rnorm(N) 
+
+  s.values2[i.exp] <- sum(x2) 
+}
+```
+
+```{r,eval=TRUE} 
+#{r clt,eval=TRUE}
+N3 <- 20  # the number of i.i.d. variables X we are going to sum
+
+n.repeats <- 1000 
+s.values3 <- numeric() 
+for (i.exp in 1:n.repeats) { # repeat the experiment 'n.repeats' times
+
+   x3 <- runif(N3) 
+
+  s.values3[i.exp] <- sum(x3) 
+}
+```
+
+
+```{r}
+init <- par(no.readonly=TRUE)
+par(mfrow=c(1,3))
+
+hist(s.values1,breaks=20,col='lightgreen', main = paste("N=",N1))
+hist(s.values2,breaks=20,col='lightgreen', main = paste("N=",N2))
+hist(s.values3,breaks=20,col='lightgreen', main = paste("N=",N3))
+```
+
+
+```{r}
+par(init)
+```
+
+
+###Response to final question (5 points): 
+
+The sample will be normally distributed with an expected mean equal to the *population mean*, as it is a sample of the underlying population, if we assume sampling was random in nature. The sample's distribution as N increases moves closer and closer toward a normal distribution, centered on 0 (zero) with a standard deviation of 1 (one). 
+
+
